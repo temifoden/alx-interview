@@ -1,5 +1,12 @@
+#!/usr/bin/python3
+"""
+pascal triangle
+"""
 def pascal_triangle(n):
-    """Returns a list of lists representing Pascal's triangle up to n rows."""
+    """
+    Returns a list of lists representing Pascal's
+    triangle up to n rows.
+    """
     if n <= 0:
         return []
     
