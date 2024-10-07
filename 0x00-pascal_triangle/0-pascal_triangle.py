@@ -2,6 +2,8 @@
 """
 pascal triangle
 """
+
+
 def pascal_triangle(n):
     """
     Returns a list of lists representing Pascal's
@@ -9,7 +11,7 @@ def pascal_triangle(n):
     """
     if n <= 0:
         return []
-    
+
     # Initialize the triangle with the first row
     triangle = [[1]]
 
