@@ -1,0 +1,1 @@
+![Not empty](./utf.svgz)
