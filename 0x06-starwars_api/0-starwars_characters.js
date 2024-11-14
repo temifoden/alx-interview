@@ -1,13 +1,13 @@
 #!/usr/bin/node
 
-const request = require("request");
+const request = require('request');
 
 // Get the movie Id from command line argument
 const movieId = process.argv[2];
 
 // Check if movie Id is provided
 if (!movieId) {
-  console.log("Movie ID absent: Usage ./file <movieId>");
+  console.log('Movie ID absent: Usage ./file <movieId>');
   process.exit(1);
 }
 
@@ -19,8 +19,9 @@ const fetchCharacter = (apiURL) => {
   return new Promise((resolve, reject) => {
     request(apiURL, (error, response, body) => {
       if (error) return reject(error);
-      if (response.statusCode !== 200)
-        return reject(`Failed to fetch character: ${response.statusCode}`);
+      if (response.statusCode !== 200) {
+        return reject(new Error(`Failed to fetch character: ${response.statusCode}`));
+      }
       const characterData = JSON.parse(body);
       resolve(characterData.name);
     });
@@ -30,10 +31,10 @@ const fetchCharacter = (apiURL) => {
 // Make a request to the files endpoint
 request(apiURL, async (error, response, body) => {
   if (error) {
-    console.log("Error fetching data:", error);
+    console.log('Error fetching data:', error);
     return;
   }
-  if (response.statusCode != 200) {
+  if (response.statusCode !== 200) {
     console.log(
       `Failed to fetch movies. Status code: ${response.statusCode} statusCode`
     );
@@ -53,6 +54,6 @@ request(apiURL, async (error, response, body) => {
 
     characterNames.forEach((name) => console.log(name));
   } catch (err) {
-    console.error("Error fetching character data:", err);
+    console.error('Error fetching character data:', err);
   }
 });
